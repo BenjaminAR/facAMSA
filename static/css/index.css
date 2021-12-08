@@ -1,0 +1,35 @@
+.font-small{
+    font-size: small;
+}
+
+.button-left{
+    float: left;
+}
+.button-right{
+    float: right;
+    margin: .5rem;
+    padding: .4rem .9rem;
+}
+
+.button-person{
+    background-color:rgb(170, 170, 170);
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.button-person:hover {
+    box-shadow: 0 10px 15px 0 rgba(0,0,0,0.24), 0 15px 30px 0 rgba(0,0,0,0.19);
+}
+
+.td-padding{
+    padding: .2rem .2rem;
+}
+
+.a-person{
+    color: white;
+}
+.a-person:hover{
+    color: rgb(182, 50, 50);
+}

@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block st %}
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/form.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block contect %}
+<div class="form-floating errorlist">
+    <input type="text" name="username" id="{{ form. }}"  required=""
+    class="form-control" placeholder="Empresa:">
+    <label for="{{ form.username.id_username }}">Usuario</label>
+</div>
+
+<div class="form-floating errorlist">
+    <input type="password" name="password" id="{{ form.password.id_password }}" required="" 
+    class="form-control" placeholder="Contraseña:">
+    <label for="{{ form.username.id_password }}">Contraseña</label>
+</div>
+
+{% endblock %}

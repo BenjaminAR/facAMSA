@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  {% block st %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/form.css' %}" rel="stylesheet">
+  
+  <link rel="shortcut icon" href="{%  static 'img/logo.ico' %}">
+  {% endblock %}
+  <title>{% block title %} Document {% endblock %}</title>
+
+</head>
+
+<body>
+  {% block header %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-person">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="https://automotoresdemexico.com.mx/Distribuidores/automotoresdemexico/img/logo.jpg">
+      </a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link disabled" style="color: rgb(0, 0, 0);">Usuario: {{ user.first_name }}
+              {{user.last_name}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="a-person" href="{% url 'logout' %}">Cerrar sesion</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% endblock %}
+
+  {% block contect %}
+  <p>Contenido</p>
+  {% endblock %}
+
+  {% block footer %}
+  <p>footer</p>
+  {% endblock %}
+
+  {% block st_js %}
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  {% endblock %}
+
+</body>
+
+</html>

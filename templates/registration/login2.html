@@ -1,0 +1,59 @@
+<html lang="es-mx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/static/css/login.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <title> AMSA </title>
+    <style type="text/css" id="tts-styles">
+        [data-tts-block-id].tts-active {
+            background: rgba(206, 225, 255, 0.9) !important;
+        }
+
+        [data-tts-sentence-id].tts-active {
+            background: rgba(0, 89, 191, 0.7) !important;
+        }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://automotoresdemexico.com.mx/Distribuidores/automotoresdemexico/img/logo.jpg" alt="">
+        </a>
+    </nav>
+
+
+
+    <main class="form-signin">
+        <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="bntMw0gcNTV9eoECDpONlKmsdO7Fk19E1kq2gV4EvmQkdENXYdLRweR15RAEJtbN">
+
+
+            
+            <input type="text" name="username" autofocus=""autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+            <label for="id_username">Nombre de usuario:</label>
+
+            
+            <input type="password" name="password"autocomplete="current-password" required="" id="id_password">
+            <label for="id_password">Contraseña:</label>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted" style="text-align: center;">© 2021</p>
+
+
+        </form>
+    </main>
+
+</body>
+</ht

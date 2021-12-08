@@ -1,0 +1,16 @@
+body{
+    background-color: #f7f7f7;
+}
+
+.conteiner{
+    margin: 2rem;
+    width: 35rem;
+}
+.pad{
+    margin-bottom: 15px;
+}
+
+.bg-person {
+    background-color: rgb(238, 238, 238) !important;
+  }
+  

@@ -1,0 +1,14 @@
+
+.conteiner{
+    margin: 2rem;
+    width: 35rem;
+}
+.pad{
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+}
+
+
+.f-right{
+    float: right;
+}

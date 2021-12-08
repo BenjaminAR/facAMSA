@@ -1,0 +1,42 @@
+body{
+    background-color: #f7f7f7;
+}
+
+.bg-person {
+    background-color: rgb(197, 197, 197) !important;
+  }
+
+  .font-small{
+    font-size: small;
+}
+
+.button-left{
+    float: left;
+}
+.button-right{
+    float: right;
+    margin: .5rem;
+    padding: .4rem .9rem;
+}
+
+.button-person{
+    background-color:rgb(59, 49, 255);
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.button-person:hover {
+    box-shadow: 0 10px 15px 0 rgba(0,0,0,0.24), 0 15px 30px 0 rgba(0,0,0,0.19);
+}
+
+.a-person{
+    color: rgb(0, 0, 0);
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+.a-person:hover{
+    color: rgb(191, 0, 0);
+}
