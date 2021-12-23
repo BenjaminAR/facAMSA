@@ -23,19 +23,29 @@ def factura_view(request):
 @login_required
 def aten_view(request):
     if request.method=='POST':
-        userCan = Solicitud_atendida(userCancel=request.user)
-        form = atencion(request.POST, instance=userCan)
+        atendida = request.GET['id_sol']
+        instance = Solicitud_atendida(userCancel=request.user)
+        form = atencion(request.POST, instance=instance)
         if form.is_valid():
             form.save()
+            num = request.GET['id_sol']
+            print(num)
+            return redirect('/factura/index')
+            
            
     else:
         form = atencion()
+        print(request.GET['id_sol'])
+        print(type(int(request.GET['id_sol'])))
     
     return render(request, 'factura/aten.html', { 'form':form }) 
 
 @login_required
 def solicitud_list(request):
-    solicitudes = Solicitud.objects.filter(solicito=request.user)
+    if request.user.is_superuser:
+        solicitudes = Solicitud.objects.all().order_by('-id')
+    else:
+        solicitudes = Solicitud.objects.filter(solicito=request.user).order_by('-id')
     contexto = {'solicitudes':solicitudes}
     print('-----------------#####-----------------')
     print('Peticion INDEX de: ' + str(request.user.first_name) + '\n')

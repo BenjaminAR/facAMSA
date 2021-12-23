@@ -9,14 +9,15 @@
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/index.css' %}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
+<!--
 <script>
     $(document).ready(function () {
         var refreshId = setInterval(function () {
-            $('#alerta_incidencias').load('/loaddiv');//actualizas el div
+            $('#alerta_incidencias').load('/act');//actualizas el div
         }, 1000);
     });
 </script>
+-->
 {% endblock %}
 
 {% block contect %}
@@ -25,7 +26,7 @@
         <thead class="h6">
             <tr>
                 <td>Empresa</td>
-                <td>Area</td>
+                <td>Área</td>
                 <td>Solicito</td>
                 <td>Orden</td>
                 <td>UUID</td>
@@ -34,7 +35,11 @@
                 <td>Fecha de solicitud</td>
                 <td>Motivo de cancelacion</td>
                 <td>Observaciones</td>
-                <td>...</td>
+                <td>
+                    <a href="{% url 'formulario' %}">
+                        <button class="button-person button-right">Nueva</button>
+                    </a>
+                </td>
             </tr>
         </thead>
         <tbody>
@@ -53,9 +58,12 @@
                 <td>{{ sol.obs }}</td>
                 {% if user.is_superuser %}
                 <td>
-                    <a href="{% url 'form_aten' %}">
-                        <button class="btn btn-primary  {{ sol.id }}"> Atender</button>
-                    </a>
+                    
+                    <form action="{% url 'form_aten' %}" method="GET">
+                        <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
+                        <input type="submit" value="Atender" class="btn btn-primary">
+                    </form>
+
                 </td>
                 {% else %}
                 <td>
@@ -72,9 +80,7 @@
 {% else %}
 <h1>No hay registos de solicitud con usuario: {{user.last_name}}</h1>
 {% endif %}
-<a href="{% url 'formulario' %}">
-    <button class="button-person button-right">Nueva</button>
-</a>
+
 
 
 {% endblock %}

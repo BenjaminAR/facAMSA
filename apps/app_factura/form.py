@@ -8,7 +8,6 @@ class solicitud(forms.ModelForm):
         model = Solicitud
         fields = [
             'sucursal',
-
             'area',
             'numOrden',
             'uid',
@@ -47,21 +46,24 @@ class solicitud(forms.ModelForm):
 class atencion(forms.ModelForm):
 
     class Meta:
-        exclude = ('userAten', 'date',)
+        exclude = ('date',)
         model = Solicitud_atendida
         fields = [
+            'atendida',
             'fecha_de_cancelacion',
             'estatus',
             'comentarios',
         ]
         labels = {
+            'atendida': 'id atendida',
             'fecha_de_cancelacion': 'Fecha de cancelación',
             'estatus': 'Estatus',
-            'comentarios': 'comentarios',
+            'comentarios': 'Comentarios',
 
         }
 
         widgets = {
+            'atendida': forms.TextInput(attrs={'class':'form-control' ' disabled'}),
             'fecha_de_cancelacion':  forms.DateInput(attrs={'class':'form-control'}), 
             'estatus': forms.TextInput(attrs={'class':'form-control' ' disabled'}),
             'comentarios': forms.Textarea(attrs={'class':'form-control pad'}),

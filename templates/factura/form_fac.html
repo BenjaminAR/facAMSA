@@ -17,13 +17,19 @@
     {% block contect %}
 
     <div class="conteiner">
-        <h3 style="text-align: center;">Solicitud para cancelacion de factura</h3>
+        <h3 style="text-align: center;">Solicitud para cancelación de factura</h3>
         <main class="form-group">
+
+
             <form method="post">
                 {% csrf_token %}
 
                 {{ form }}
-                <button class="button-person button-right" type="submit">Enviar</button>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+                
+            </form>
+
         </main>
     </div>
 
@@ -33,6 +39,8 @@
 {% block footer %}
 
 {% endblock %}
+
+
 
 {% block st_js %}
 <script src="{% static 'js/bootstrap.min.js' %}"></script>

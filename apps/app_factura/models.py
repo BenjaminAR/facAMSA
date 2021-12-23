@@ -20,7 +20,8 @@ class Solicitud(models.Model):
     uid = models.CharField(max_length=80,null=False)
     rfc = models.CharField(max_length=14,null=False)
     folio = models.PositiveIntegerField(null=False)
-    fecha_sol_de_cancelacion = models.DateTimeField(default=dateformat.format(timezone.now(), 'd-m-Y'), null=False)
+    #fecha_sol_de_cancelacion = models.DateTimeField(default=dateformat.format(timezone.now(), 'd-m-Y'), null=False)
+    fecha_sol_de_cancelacion = models.DateTimeField(null=False, blank=False, default=timezone.now)
     motivo_de_cancelacion = models.CharField(max_length=60, null=False)
     obs = models.CharField(max_length=600,  null=False, blank=False)
     class Meta:
