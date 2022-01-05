@@ -7,42 +7,38 @@
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/form.css' %}" rel="stylesheet">
 
-
 {% endblock %}
 
 <title>{% block title %} AMSA {% endblock %}</title>
 
 <body>
     {% block contect %}
+    <section class="center">
+        <main class="form-group">
+            <form method="post">
+                {% csrf_token %}
 
-    <main class="form-group">
-        <form method="post">
-            {% csrf_token %}
-            
-            <!--{{ form }}-->
+                <h1 class="h3 mb-4 fw-normal text-center " style="margin-top: 1.5rem;">Atender cancelación</h1>
 
-            <h1 class="h3 mb-4 fw-normal text-center ">Atender cancelación</h1>
-    
-            <label for="{{ form.form_fac.atendida }}">Atendio id</label>
-            <input type="text" name="atendida" id="{{ form.form_fac.atendida }}" value="{{ id_sol }}"  required=""
-            class="form-control">
-            
-            <label for="{{ form.form_fac.fecha_de_cancelacion }}">Fecha de cancelación</label>
-            <input type="text" name="fecha_de_cancelacion" id="{{ form.form_fac.fecha_de_cancelacion }}"  required=""
-            class="form-control" placeholder="DD/MM/AAAA">
-            
-            <label for="{{ form.form_fac.estatus }}">Estatus</label>
-            <input type="text" name="estatus" id="{{ form.form_fac.estatus }}"  required=""
-            class="form-control">
-            
-            <label for="{{ form.form_fac.comentarios }}">Comentarios</label>
-            <input type="text" name="comentarios" id="{{ form.form_fac.comentarios }}"  required="" 
-            class="form-control">
-            
-           
-            <button class="button-person button-right" type="submit">Enviar</button>
-        </form>
-    </main>
+                <label for="{{ form.form_fac.atendida }}">Atendio id</label>
+                <input type="text" name="atendida" id="{{ form.form_fac.atendida }}" value="{{ id_sol }}" required=""
+                    class="form-control">
+
+                <label for="{{ form.form_fac.fecha_de_cancelacion }}">Fecha de cancelación</label>
+                <input type="text" name="fecha_de_cancelacion" id="{{ form.form_fac.fecha_de_cancelacion }}" required=""
+                    class="form-control" placeholder="DD/MM/AAAA">
+
+                <label for="{{ form.form_fac.estatus }}">Estatus</label>
+                <input type="text" name="estatus" id="{{ form.form_fac.estatus }}" required="" class="form-control">
+
+                <label for="{{ form.form_fac.comentarios }}">Comentarios</label>
+                <input type="text" name="comentarios" id="{{ form.form_fac.comentarios }}" required=""
+                    class="form-control">
+
+                <button class="button-person button-right" type="submit">Enviar</button>
+            </form>
+        </main>
+    </section>
 
 
     {% endblock %}

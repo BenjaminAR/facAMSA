@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE, PROTECT
+from django.db.models.fields import CharField, IntegerField, PositiveIntegerField
 from django.utils import timezone, dateformat
 
 class Sucursal(models.Model):
@@ -38,6 +39,16 @@ class Solicitud(models.Model):
     def __str__(self):
         return str(self.id)
 
+class Motivo_cancelacion_sat(models.Model):
+    clave = PositiveIntegerField(null= False, blank=False)
+    valor = CharField(max_length=120, default=None)
+    class Meta:
+        verbose_name='Clave'
+        verbose_name_plural='Claves'
+    def __str__(self):
+        return str(self.Clave)
+
+
 class Solicitud_atendida(models.Model):
     userCancel = models.ForeignKey(User, null=False,  on_delete=models.PROTECT)
     date = models.DateTimeField(default=timezone.now)
@@ -45,6 +56,7 @@ class Solicitud_atendida(models.Model):
     estatus = models.CharField(max_length=40)
     comentarios = models.CharField(max_length=120, null=True)
     atendida = models.OneToOneField(Solicitud, null=False,  blank=False, on_delete=models.CASCADE)
+    motivo_cancelacion_sat = models.ForeignKey(Motivo_cancelacion_sat, null=True, blank=True, on_delete=models.CASCADE, default=None)
     class Meta:
         verbose_name='Solicitud atendida'
         verbose_name_plural='Atendidas'

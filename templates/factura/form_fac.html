@@ -1,12 +1,12 @@
 {% extends 'base/base.html' %}
 
 {% load static %}
+
 {% block st %}
 
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/form.css' %}" rel="stylesheet">
-
 
 {% endblock %}
 
@@ -41,8 +41,7 @@
 {% endblock %}
 
 
-
+{% load static %}
 {% block st_js %}
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.js' %}"></script>
+
 {% endblock %}

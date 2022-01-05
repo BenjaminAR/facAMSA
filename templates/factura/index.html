@@ -38,9 +38,12 @@
                 <td>Fecha de solicitud</td>
                 <td>Obs</td>
                 <td>
+                    &nbsp;
+                    <!--
                     <a href="{% url 'formulario' %}">
                         <button class="button-person">Nueva</button>
                     </a>
+                    -->
                 </td>
             </tr>
         </thead>
@@ -61,16 +64,16 @@
                 <td>{{ sol.fecha_sol_de_cancelacion }}</td>
                 <td>{{ sol.obs }}</td>
                 {% if user.is_superuser %}
-                <!-- 
+                 
                 <td>
                     
                     <form action="{% url 'form_aten' %}" method="GET">
                         <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
-                        <input type="submit" value="Atender" class="btn btn-primary">
+                        <input type="submit" value="Atender" class="button-person">
                     </form>
 
                 </td>
-                -->
+                
                 {% else %}
                 <td>
                     <a>
