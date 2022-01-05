@@ -22,22 +22,24 @@
 
 {% block contect %}
 <div id="act">
-    <table class="table table-bordered ">
-        <thead class="h6">
-            <tr>
-                <td>Empresa</td>
-                <td>Área</td>
+    <table class="table table-bordered">
+        <thead class="h6 thead_person">
+            <tr class="tr_person">
                 <td>Solicito</td>
+                <td>Empresa</td>
+                <td>Documento</td>
+                <td>Cliente</td>
+                <td>Cartera</td>
                 <td>Orden</td>
-                <td>UUID</td>
-                <td>RFC</td>
                 <td>Folio</td>
-                <td>Fecha de solicitud</td>
+                <td>RFC</td>
+                <td>Cuenta contable</td>
                 <td>Motivo de cancelacion</td>
-                <td>Observaciones</td>
+                <td>Fecha de solicitud</td>
+                <td>Obs</td>
                 <td>
                     <a href="{% url 'formulario' %}">
-                        <button class="button-person button-right">Nueva</button>
+                        <button class="button-person">Nueva</button>
                     </a>
                 </td>
             </tr>
@@ -46,17 +48,20 @@
             {% if solicitudes %}
             {% for sol in solicitudes %}
             <tr class="font-small">
-                <td>{{ sol.sucursal.empresa }}</td>
-                <td>{{ sol.area }}</td>
                 <td>{{ sol.solicito }}</td>
+                <td>{{ sol.sucursal.empresa }}</td>
+                <td>{{ sol.documento }}</td>
+                <td>{{ sol.nombre_cliente }}</td>
+                <td>{{ sol.cartera_cliente }}</td>
                 <td>{{ sol.numOrden }}</td>
-                <td>{{ sol.uid }}</td>
-                <td>{{ sol.rfc }}</td>
                 <td>{{ sol.folio }}</td>
-                <td>{{ sol.fecha_sol_de_cancelacion }}</td>
+                <td>{{ sol.rfc }}</td>
+                <td>{{ sol.cuenta_contable }}</td>
                 <td>{{ sol.motivo_de_cancelacion }}</td>
+                <td>{{ sol.fecha_sol_de_cancelacion }}</td>
                 <td>{{ sol.obs }}</td>
                 {% if user.is_superuser %}
+                <!-- 
                 <td>
                     
                     <form action="{% url 'form_aten' %}" method="GET">
@@ -65,10 +70,11 @@
                     </form>
 
                 </td>
+                -->
                 {% else %}
                 <td>
                     <a>
-                        <button class="btn btn-primary">Estatus</button>
+                        <button class="button-person-dos">Estatus</button>
                     </a>
                 </td>
                 {% endif %}
