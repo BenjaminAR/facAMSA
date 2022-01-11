@@ -52,7 +52,7 @@ class solicitud(forms.ModelForm):
 class atencion(forms.ModelForm):
 
     class Meta:
-        exclude = ('date','userCnacel')
+        exclude = ('date',)
         model = Solicitud_atendida
         fields = [
             'atendida',
@@ -68,13 +68,12 @@ class atencion(forms.ModelForm):
             'estatus': 'Estatus',
             'motivo_cancelacion_sat': 'Motivo de cancelacion SAT',
             'comentarios': 'Comentarios',
-            
-
         }
 
         widgets = {
             'atendida': forms.TextInput(attrs={'class':'form-control disabled'}),
             'fecha_de_cancelacion':  forms.DateInput(attrs={'class':'form-control'}), 
             'estatus': forms.TextInput(attrs={'class':'form-control disabled'}),
+            'motivo_cancelacion_sat': forms.Select(attrs={'class':'form-control'}),
             'comentarios': forms.Textarea(attrs={'class':'form-control pad'}),
         }

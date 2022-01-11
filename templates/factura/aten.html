@@ -15,29 +15,59 @@
     {% block contect %}
     <section class="center">
         <main class="form-group">
+            <h1 class="h3 mb-3 fw-normal text-center " style="margin-top: .7rem;">Atender cancelación</h1>
             <form method="post">
                 {% csrf_token %}
 
-                <h1 class="h3 mb-4 fw-normal text-center " style="margin-top: 1.5rem;">Atender cancelación</h1>
+                <tr>
+                    <th><label for="id_atendida">Id</label></th>
+                    <td><input type="hidden" name="atendida" class="form-control" required id="id_atendida"
+                            value="{{ atendida_rq }}"></td>
+                </tr>
 
-                <label for="{{ form.form_fac.atendida }}">Atendio id</label>
-                <input type="text" name="atendida" id="{{ form.form_fac.atendida }}" value="{{ id_sol }}" required=""
-                    class="form-control">
+                <tr>
+                    <th><label for="id_fecha_de_cancelacion">Fecha de cancelación:</label></th>
+                    <td><input type="text" name="fecha_de_cancelacion" placeholder="DD/MM/AAAA" class="form-control"
+                            id="id_fecha_de_cancelacion"><input type="hidden" name="initial-fecha_de_cancelacion"
+                            id="initial-id_fecha_de_cancelacion"></td>
+                </tr>
+                <tr>
+                    <th><label for="id_estatus">Estatus:</label></th>
+                    <td><input type="text" name="estatus" class="form-control disabled" maxlength="40" required
+                            id="id_estatus"></td>
+                </tr>
+                <tr>
+                    <th><label for="id_motivo_cancelacion_sat">Motivo de cancelacion SAT:</label></th>
+                    <td><select name="motivo_cancelacion_sat" class="form-control" id="id_motivo_cancelacion_sat">
+                            <option value="" selected>---------</option>
 
-                <label for="{{ form.form_fac.fecha_de_cancelacion }}">Fecha de cancelación</label>
-                <input type="text" name="fecha_de_cancelacion" id="{{ form.form_fac.fecha_de_cancelacion }}" required=""
-                    class="form-control" placeholder="DD/MM/AAAA">
+                            <option value="4">1.- Comprobante emitido con errores con relación.</option>
 
-                <label for="{{ form.form_fac.estatus }}">Estatus</label>
-                <input type="text" name="estatus" id="{{ form.form_fac.estatus }}" required="" class="form-control">
+                            <option value="5">2.- Comprobante emitido con errores sin relación.</option>
 
-                <label for="{{ form.form_fac.comentarios }}">Comentarios</label>
-                <input type="text" name="comentarios" id="{{ form.form_fac.comentarios }}" required=""
-                    class="form-control">
+                            <option value="6">3.- No se llevo acabo la operacón.</option>
 
+                            <option value="7">4.- Operación nominativa relacionada en una factura global.</option>
+
+                        </select></td>
+                </tr>
+                <tr>
+                    <th><label for="id_comentarios">Comentarios:</label></th>
+                    <td><textarea name="comentarios" cols="40" rows="10" class="form-control pad" maxlength="120"
+                            required id="id_comentarios">
+            </textarea></td>
+                </tr>
                 <button class="button-person button-right" type="submit">Enviar</button>
             </form>
         </main>
+    </section>
+
+    <!--
+                {{ form }}
+
+      -->
+    </form>
+    </main>
     </section>
 
 

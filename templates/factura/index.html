@@ -76,9 +76,15 @@
                 
                 {% else %}
                 <td>
-                    <a>
-                        <button class="button-person-dos">Estatus</button>
+                    <!--
+                    <a href="{% url 'sol_atendida' %}">
+                        <button class="button-person" >Estatus</button>
                     </a>
+                    -->
+                    <form action="{% url 'sol_atendida' %}" method="GET">
+                        <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
+                        <input type="submit" value="Estatus" class="button-person">
+                    </form>
                 </td>
                 {% endif %}
             </tr>
@@ -87,7 +93,7 @@
     </table>
 </div>
 {% else %}
-<h1>No hay registos de solicitud con usuario: {{user.last_name}}</h1>
+<h1>No hay registos de solicitudes con usuario: {{user.last_name}}</h1>
 {% endif %}
 
 
