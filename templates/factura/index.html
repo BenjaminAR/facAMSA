@@ -22,12 +22,14 @@
 
 {% block contect %}
 <div id="act">
+    {% if solicitudes %}
     <table class="table table-bordered">
         <thead class="h6 thead_person">
             <tr class="tr_person">
                 <td>Solicito</td>
                 <td>Empresa</td>
                 <td>Documento</td>
+                <td>UUID</td>
                 <td>Cliente</td>
                 <td>Cartera</td>
                 <td>Orden</td>
@@ -36,7 +38,6 @@
                 <td>Cuenta contable</td>
                 <td>Motivo de cancelacion</td>
                 <td>Fecha de solicitud</td>
-                <td>Obs</td>
                 <td>
                     &nbsp;
                     <!--
@@ -48,12 +49,13 @@
             </tr>
         </thead>
         <tbody>
-            {% if solicitudes %}
+            
             {% for sol in solicitudes %}
             <tr class="font-small">
                 <td>{{ sol.solicito }}</td>
                 <td>{{ sol.sucursal.empresa }}</td>
                 <td>{{ sol.documento }}</td>
+                <td>{{ sol.uuid }}</td>
                 <td>{{ sol.nombre_cliente }}</td>
                 <td>{{ sol.cartera_cliente }}</td>
                 <td>{{ sol.numOrden }}</td>
@@ -93,7 +95,16 @@
     </table>
 </div>
 {% else %}
-<h1>No hay registos de solicitudes con usuario: {{user.last_name}}</h1>
+{% if user.is_superuser %}
+<br>
+<br>
+<h2 style="text-align: center;" >No hay nada que atender</h2>
+<br>
+{% else %}
+<br>
+<br>
+<h2 style="text-align: center;" >No hay registos de solicitudes con usuario: {{ user.first_name }} {{user.last_name}}</h2>
+{% endif %}
 {% endif %}
 
 

@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'amsa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'amsa',
+        'NAME':'AMSA',
         'USER':'postgres',
-        'PASSWORD':'BAR.2021%',
+        'PASSWORD':'123456',
         'HOST':'localhost',
         'PORT': 5432,
     }

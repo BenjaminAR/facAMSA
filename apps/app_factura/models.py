@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE, PROTECT
-from django.db.models.fields import CharField, IntegerField, PositiveIntegerField
-from django.utils import timezone, dateformat
+from django.db.models.fields import CharField, PositiveIntegerField
+from django.utils import timezone
 
 class Sucursal(models.Model):
     empresa = models.CharField(max_length=80)
@@ -62,7 +61,3 @@ class Solicitud_atendida(models.Model):
         verbose_name_plural='Atendidas'
     def __str__(self):
         return str(self.id)
-
-
-
-
