@@ -29,7 +29,6 @@
                 <td>Solicito</td>
                 <td>Empresa</td>
                 <td>Documento</td>
-                <td>UUID</td>
                 <td>Cliente</td>
                 <td>Cartera</td>
                 <td>Orden</td>
@@ -38,6 +37,7 @@
                 <td>Cuenta contable</td>
                 <td>Motivo de cancelacion</td>
                 <td>Fecha de solicitud</td>
+                <td>Obs</td>
                 <td>
                     &nbsp;
                     <!--
@@ -55,7 +55,6 @@
                 <td>{{ sol.solicito }}</td>
                 <td>{{ sol.sucursal.empresa }}</td>
                 <td>{{ sol.documento }}</td>
-                <td>{{ sol.uuid }}</td>
                 <td>{{ sol.nombre_cliente }}</td>
                 <td>{{ sol.cartera_cliente }}</td>
                 <td>{{ sol.numOrden }}</td>
@@ -63,7 +62,7 @@
                 <td>{{ sol.rfc }}</td>
                 <td>{{ sol.cuenta_contable }}</td>
                 <td>{{ sol.motivo_de_cancelacion }}</td>
-                <td>{{ sol.fecha_sol_de_cancelacion }}</td>
+                <td>{{ sol.fecha_sol_de_cancelacion}}</td>
                 <td>{{ sol.obs }}</td>
                 {% if user.is_superuser %}
                  

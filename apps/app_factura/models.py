@@ -30,7 +30,8 @@ class Solicitud(models.Model):
     rfc = models.CharField(max_length=14,null=False)
     cuenta_contable = models.CharField(max_length=30, default=None, null=True, blank=False)
     motivo_de_cancelacion = models.CharField(max_length=60, null=False)
-    fecha_sol_de_cancelacion = models.DateTimeField(null=False, blank=False, default=timezone.now)
+    #fecha_sol_de_cancelacion = models.DateTimeField(null=False, blank=False, default=timezone.now)
+    fecha_sol_de_cancelacion = models.DateField(null=False, blank=False, default=timezone.now)
     obs = models.CharField(max_length=600,  null=True, blank=True)
     class Meta:
         verbose_name='Factura'
@@ -50,8 +51,8 @@ class Motivo_cancelacion_sat(models.Model):
 
 class Solicitud_atendida(models.Model):
     userCancel = models.ForeignKey(User, null=False,  on_delete=models.PROTECT)
-    date = models.DateTimeField(default=timezone.now)
-    fecha_de_cancelacion = models.DateTimeField(null=True, blank=True, default=timezone.now)
+    date = models.DateField(default=timezone.now)
+    fecha_de_cancelacion = models.DateField(null=False, blank=False, default=timezone.now)
     estatus = models.CharField(max_length=40)
     comentarios = models.CharField(max_length=120, null=True)
     atendida = models.OneToOneField(Solicitud, null=False,  blank=False, on_delete=models.CASCADE)
