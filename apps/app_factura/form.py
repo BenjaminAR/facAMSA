@@ -58,7 +58,6 @@ class atencion(forms.ModelForm):
             'atendida',
             'fecha_de_cancelacion',
             'estatus',
-            'motivo_cancelacion_sat',
             'comentarios',
             
         ]
@@ -66,7 +65,6 @@ class atencion(forms.ModelForm):
             'atendida': 'id atendida',
             'fecha_de_cancelacion': 'Fecha de cancelación',
             'estatus': 'Estatus',
-            'motivo_cancelacion_sat': 'Motivo de cancelacion SAT',
             'comentarios': 'Comentarios',
         }
 
@@ -74,6 +72,5 @@ class atencion(forms.ModelForm):
             'atendida': forms.TextInput(attrs={'class':'form-control disabled'}),
             'fecha_de_cancelacion':  forms.DateInput(attrs={'class':'form-control'}), 
             'estatus': forms.TextInput(attrs={'class':'form-control disabled'}),
-            'motivo_cancelacion_sat': forms.Select(attrs={'class':'form-control'}),
             'comentarios': forms.Textarea(attrs={'class':'form-control pad'}),
         }

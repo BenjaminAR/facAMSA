@@ -4,13 +4,9 @@ from apps.app_factura.form import solicitud, atencion
 from django.contrib.auth.decorators import login_required
 from apps.app_factura.models import Solicitud, Solicitud_atendida
 
-
-
-
 #Funcion para el login
 def login(request):
     return render (request, 'login.html') 
-
 
 #Función para listar el contenido del model Solicitud
 @login_required
@@ -73,9 +69,17 @@ def solicitud_atendida_list(request):
 
     contexto = {'solicitudes_atendidas':solicitudes_atendidas, 'id_sol':id_sol}
     print('-----------------#####-----------------')
-    print('Peticion ATENDIDAS de: ' + str(request.user.first_name) +' ' + str(request.user.last_name) + '\n')
+    print('Peticion ATENDIDAS de: ' + str(request.user.first_name) + ' ' + str(request.user.last_name) + '\n')
     for sol in solicitudes_atendidas:
         print(f'atendida_id:  {sol.atendida_id}')
         print(f'id_sol: {id_sol}')
+
     print('-----------------#####-----------------')
     return render(request, 'factura/sol_atendida.html', contexto )
+
+def base(request):
+    if  request.session.session_key:
+        return redirect('/factura/index')
+    else:
+        return redirect('/login/')
+        

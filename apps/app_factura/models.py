@@ -56,7 +56,6 @@ class Solicitud_atendida(models.Model):
     estatus = models.CharField(max_length=40)
     comentarios = models.CharField(max_length=120, null=True)
     atendida = models.OneToOneField(Solicitud, null=False,  blank=False, on_delete=models.CASCADE)
-    motivo_cancelacion_sat = models.ForeignKey(Motivo_cancelacion_sat, null=True, blank=True, on_delete=models.CASCADE)
     class Meta:
         verbose_name='Solicitud atendida'
         verbose_name_plural='Atendidas'

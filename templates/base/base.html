@@ -63,7 +63,9 @@
   {% endblock %}
 
   {% block contect %}
-  <p>Contenido</p>
+  {{ if.django_session }}
+    <h1>Sesion activa</h1>
+  {{ endif }}
   {% endblock %}
 
 
