@@ -50,7 +50,7 @@ def factura_view(request):
 def aten_view(request):
     atendida_rq = request.GET['id_sol']
     if request.method=='POST':
-        instance = Solicitud_atendida(userCancel=request.user''', atendida=atendida_rq''' )
+        instance = Solicitud_atendida(userCancel=request.user)# atendida=atendida_rq #Causa error
         form = atencion(request.POST, instance=instance)
         if form.is_valid():
             form.save()
