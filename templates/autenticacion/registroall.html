@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block st %}
 
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -10,13 +12,12 @@
 
 {% endblock %}
 
-<title>{% block title %} AMSA | Nuevo usuario {% endblock %}</title>
+<title>{% block title %} AMSA | Completar usuario {% endblock %}</title>
 
 {% block contect %}
 
 <div class="conteiner">
-
-    <h4 style="text-align: center; padding-top: 1.5rem;">Nuevo usuario</h4>
+    <h4 style="text-align: center; padding-top: 1.5rem;">Completar registro de usuario</h4>
     <br>
     <main class="form-group">
 
@@ -24,13 +25,14 @@
         <form method="post">
             {% csrf_token %}
 
-            {{ form }}
+            {{ form | crispy }}
 
             <button class="w-25  btn btn-primary" style="margin-top: 2rem;" type="submit">Enviar</button>
 
         </form>
 
     </main>
+
 </div>
 
 {% endblock %}

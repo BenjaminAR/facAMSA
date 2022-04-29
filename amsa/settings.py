@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'apps.app_autenticacion',
     'apps.app_factura',
 ]
@@ -121,3 +122,5 @@ MESSAGAE_TAGS={
     msj_error.ERROR: 'danger',
 
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
