@@ -1,13 +1,11 @@
-
 .conteiner{
-    margin: 2rem;
-    width: 35rem;
+    margin: auto;
+    width: 50%;
 }
 .pad{
     margin-bottom: .5rem;
     margin-top: 1rem;
 }
-
 
 .f-right{
     float: right;

@@ -12,12 +12,13 @@
 
 <title>{% block title %} AMSA {% endblock %}</title>
 
+
+
+{% block contect %}
+
 <body>
-
-    {% block contect %}
-
     <div class="conteiner">
-        <h4 style="text-align: center;">Solicitud para cancelación de factura</h4>
+        <h4 style="text-align: center; padding-top: 1.5rem;">Solicitud para cancelación de factura</h4>
         <main class="form-group">
 
 
@@ -27,7 +28,7 @@
                 {{ form }}
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Enviar solicitud</button>
-                
+
             </form>
 
         </main>

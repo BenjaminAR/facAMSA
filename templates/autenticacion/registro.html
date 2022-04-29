@@ -10,16 +10,35 @@
 
 {% endblock %}
 
-<title>{% block title %} autenticacion AMSA {% endblock %}</title>
-
+<title>{% block title %} AMSA | Nuevo usuario {% endblock %}</title>
 
 {% block contect %}
 
+<div class="conteiner">
+    {% if user.is_superuser %}
+    <h4 style="text-align: center; padding-top: 1.5rem;">Nuevo usuario</h4>
+    <br>
+    <main class="form-group">
+
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form }}
+
+            <button class="w-25  btn btn-primary" style="margin-top: 2rem;" type="submit">Enviar</button>
+
+        </form>
+
+    </main>
+    {% else %}
+
+    <h4>Error</h4>
+    <p>No tienes permisos para generear un usuario nuevo contacta con Area de sistemas</p>
+    {% endif %}
+</div>
 
 {% endblock %}
-
-
-    <h1>Registro</h1>
 
 {% block footer %}
 

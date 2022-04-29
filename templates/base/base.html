@@ -44,7 +44,11 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
+              {% if user.first_name is not NULL %}
               <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="{% url 'login' %}">Ingresar</a></li>
+              {% endif %}
             </ul>
           </li>
         </ul>
