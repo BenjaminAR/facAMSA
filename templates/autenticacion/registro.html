@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block st %}
 
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -24,7 +26,7 @@
         <form method="post">
             {% csrf_token %}
 
-            {{ form }}
+            {{ form | crispy}}
 
             <button class="w-25  btn btn-primary" style="margin-top: 2rem;" type="submit">Enviar</button>
 
