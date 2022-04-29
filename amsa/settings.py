@@ -7,12 +7,10 @@ Using Django 3.2.9.
 from pathlib import Path
 import os
 from decouple import config
+from django.contrib.messages import constants as msj_error
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -20,15 +18,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-'''
-
-# Produccion activa
-
-DEBUG = False
-
-ALLOWED_HOSTS = ['*']
-
-'''
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.app_autenticacion',
     'apps.app_factura',
 ]
 
@@ -121,3 +111,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/factura/index'
 LOGOUT_REDIRECT_URL ='/login'
 LOGIN_URL='/login'
+
+MESSAGAE_TAGS={
+
+    msj_error.DEBUG: 'debug',
+    msj_error.INFO: 'info',
+    msj_error.SUCCESS: 'success',
+    msj_error.WARNING: 'warning',
+    msj_error.ERROR: 'danger',
+
+}

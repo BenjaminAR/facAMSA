@@ -1,12 +1,19 @@
 from http.client import responses
 from django.shortcuts import render, redirect
-from apps.app_factura.form import solicitud, atencion
 from django.contrib.auth.decorators import login_required
+from apps.app_factura.form import solicitud, atencion
 from apps.app_factura.models import Solicitud, Solicitud_atendida
 
 #Funcion para el login
 def login(request):
     return render (request, 'login.html') 
+
+#Funcion para redireccionar /factura
+def base(request):
+    if  request.session.session_key:
+        return redirect('/factura/index')
+    else:
+        return redirect('/login/')
 
 #Función para listar el contenido del model Solicitud
 @login_required
@@ -17,7 +24,7 @@ def solicitud_list(request):
         solicitudes = Solicitud.objects.filter(solicito=request.user).order_by('-id')
     contexto = {'solicitudes':solicitudes}
     print('-----------------#####-----------------')
-    print('\n' + f'Peticion ATENDIDAS de: ' + str(request.user.first_name) +' ' + str(request.user.last_name))
+    print('\n' + f'Peticion ATENDIDAS de: ' + str(request.user.first_name) + ' ' + str(request.user.last_name))
     for sol in solicitudes:     
         print(f'id: {sol.id}')
 
@@ -50,11 +57,12 @@ def aten_view(request):
         form = atencion(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('/factura/index')   
-
+            print(f'El formunario de atencion fue salvado correctamente id:')
+            return redirect('/factura/index')
     else:
         form = atencion()
         print('No se grabo el formulario.')
+
     contexto = {'form':form, 'atendida_rq':atendida_rq }
     return render(request, 'factura/aten.html', contexto) 
 
@@ -77,9 +85,5 @@ def solicitud_atendida_list(request):
     print('-----------------#####-----------------')
     return render(request, 'factura/sol_atendida.html', contexto )
 
-def base(request):
-    if  request.session.session_key:
-        return redirect('/factura/index')
-    else:
-        return redirect('/login/')
+
         

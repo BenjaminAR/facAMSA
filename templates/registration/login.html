@@ -21,6 +21,16 @@
         <form method="post">
             {% csrf_token %}
 
+            {% if messages %}
+
+            {% for msj in messages %}
+
+            <span class="alert alert-{{msj.tags}}">{{ msj }}</span>
+
+            {% endfor %}
+
+            {% endif %}
+
             <div class="centrador">
             <img class="mb-5 imagen" src="https://spdfc.s3.us-west-2.amazonaws.com/distribuidores/Automotores_de_Mexico/img/logo.jpg" alt="" >
             </div>
@@ -41,6 +51,7 @@
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
             <p class="mt-5 mb-3 text-muted" style="text-align: center;">© Powered by Benjamin Avila 2021</p>
+
         </form>
         
     </main>

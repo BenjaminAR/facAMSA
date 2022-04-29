@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import CharField, PositiveIntegerField
@@ -28,9 +29,8 @@ class Solicitud(models.Model):
     numOrden = models.IntegerField(null=False)
     folio = models.PositiveIntegerField(null=True, blank=True)
     rfc = models.CharField(max_length=14,null=False)
-    cuenta_contable = models.CharField(max_length=30, default=None, null=True, blank=False)
+    cuenta_contable = models.CharField(max_length=30, null=True, blank=False, default='N/A')
     motivo_de_cancelacion = models.CharField(max_length=60, null=False)
-    #fecha_sol_de_cancelacion = models.DateTimeField(null=False, blank=False, default=timezone.now)
     fecha_sol_de_cancelacion = models.DateField(null=False, blank=False, default=timezone.now)
     obs = models.CharField(max_length=600,  null=True, blank=True)
     class Meta:
