@@ -12,8 +12,8 @@
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/form.css' %}" rel="stylesheet">
-  <link rel="shortcut icon" href="{%  static 'img/logo.ico' %}">
   {% endblock %}
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
   <title>{% block title %} AMSA {% endblock %}</title>
 </head>
 
@@ -21,7 +21,7 @@
   {% block header %}
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}">
+      <a class="navbar-brand" href="{% url 'dashboard' %}">
         <img src="https://spdfc.s3.us-west-2.amazonaws.com/distribuidores/Automotores_de_Mexico/img/logo.jpg">
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -7,20 +7,17 @@
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/form.css' %}" rel="stylesheet">
 
+
 {% endblock %}
 
-<title>{% block title %} AMSA {% endblock %}</title>
+<title>{% block title %} AMSA | Soporte {% endblock %}</title>
 
 <body>
 
     {% block contect %}
 
-    {% if user.first_name is not NULL %}
     <h1 style="text-align: center; margin-top: 1rem;">Bienvenido al sistema de soporte AMSA</h1>
-    {% else %}
-    <h1 style="text-align: center; margin-top: 1rem;">Ingresa a tu sesion</h1>
-    <p><a href="{% url 'login' %}">Ingresar a sistema</a></p>
-    {% endif %}
+
 
     {% endblock %}
 
