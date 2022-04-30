@@ -84,6 +84,3 @@ def solicitud_atendida_list(request):
 
     print('-----------------#####-----------------')
     return render(request, 'factura/sol_atendida.html', contexto )
-
-
-        
