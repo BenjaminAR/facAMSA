@@ -7,10 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %}
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <!-- Comentar en producción -->
+  <!--
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  -->
   {% block st %}
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/app.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/form.css' %}" rel="stylesheet">
   {% endblock %}
   <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
@@ -39,6 +42,9 @@
               Menú
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if user.is_superuser %}
+              <li><a class="dropdown-item" href="{% url 'registro' %}">Crear usuario</a></li>
+              {% endif %}
               <li><a class="dropdown-item" href="{% url 'index' %}">Solicitudes</a></li>
               <li><a class="dropdown-item" href="{% url 'formulario' %}">Nueva solicitud</a></li>
               <li>
@@ -63,17 +69,16 @@
       </div>
     </div>
   </nav>
-
   {% endblock %}
 
   {% block contect %}
-  {{ if.django_session }}
-    <h1>Sesion activa</h1>
-  {{ endif }}
+
   {% endblock %}
 
 
   {% load static %}
+
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
   {% block st_js %}
 
   {% endblock %}

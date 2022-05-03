@@ -1,17 +1,16 @@
 {% extends 'base/base.html' %}
 
 
-<title>{% block title %}AMSA{% endblock %}</title>
+<title>{% block title %}AMSA | solicitudes{% endblock %}</title>
 {% load static %}
 
 {% block st %}
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/index.css' %}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!--
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () { 
         var refreshId = setInterval(function () {
             $('#alerta_incidencias').load('/act');//actualizas el div
         }, 1000);

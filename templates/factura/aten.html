@@ -9,7 +9,7 @@
 
 {% endblock %}
 
-<title>{% block title %} AMSA {% endblock %}</title>
+<title>{% block title %} AMSA | Atender solicitud {% endblock %}</title>
 
 <body>
     {% block contect %}
@@ -39,19 +39,14 @@
 
                 <tr>
                     <th><label for="id_comentarios">Comentarios:</label></th>
-                    <td><textarea name="comentarios" cols="40" rows="10" class="form-control" maxlength="120"
-                            required id="id_comentarios">
+                    <td><textarea name="comentarios" cols="40" rows="10" class="form-control" maxlength="120" required
+                            id="id_comentarios">
             </textarea></td>
                 </tr>
                 <button class="button-person button-right" type="submit">Enviar</button>
             </form>
         </main>
     </section>
-
-    <!--
-                {{ form }}
-
-      -->
     </form>
     </main>
     </section>
