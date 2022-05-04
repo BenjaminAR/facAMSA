@@ -4,13 +4,12 @@
 
 {% block st %}
 
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/form.css' %}" rel="stylesheet">
 
 {% endblock %}
 
-<title>{% block title %} AMSA | Nueva solicitud {% endblock %}</title>
+<title>{% block title %} AMSA | Eliminar Atención {% endblock %}</title>
 
 
 
@@ -18,16 +17,15 @@
 
 <body>
     <div class="conteiner">
-        <h4 style="text-align: center; padding-top: 2.5rem;">Solicitud para cancelación de CFDI</h4>
+        <h4 style="text-align: center; padding-top: 1.5rem;">Elimniar id: </h4>
         <main class="form-group">
 
 
             <form method="post">
                 {% csrf_token %}
 
-                {{ form }}
-
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Enviar solicitud</button>
+                <button class="btn btn-danger" type="submit">Elimniar</button>
+                <button><a class="btn btn-default" href="{% url 'index' %}">Cancelar</a>
 
             </form>
 

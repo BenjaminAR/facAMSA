@@ -20,41 +20,47 @@
 {% endblock %}
 
 {% block contect %}
-<div id="act">
-    {% if solicitudes_atendidas %}
-    <table class="table table-bordered">
-        <thead class="h6 thead_person">
-            <tr class="tr_person">
-                <td>Cancelo</td>
-                <td>Fecha de cancelacion</td>
-                <td>Estatus</td>
-                <td>Comentarios</td>
-                <td>Documento</td>
-                <td>
-                    &nbsp;
-                    <!--
-                    <a href="{% url 'formulario' %}">
-                        <button class="button-person">Nueva</button>
-                    </a>
-                    -->
-                </td>
-            </tr>
-        </thead>
-        <tbody>
 
-            {% for sol in solicitudes_atendidas %}
-            <tr class="font-small">
-                <td>{{ sol.userCancel }}</td>
-                <td>{{ sol.fecha_de_cancelacion }}</td>
-                <td>{{ sol.estatus }}</td>
-                <td>{{ sol.comentarios }}</td>
-                <td>{{ sol.atendida.documento }}</td>
+{% if solicitudes_atendidas %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Cancelo</th>
+            <th scope="col">Fecha de cancelacion</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Comentarios</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Opciones</td>
+        </tr>
+    </thead>
+    <tbody>
 
-            </tr>
-        </tbody>
-        {% endfor %}
-    </table>
-</div>
+        {% for sol in solicitudes_atendidas %}
+        <tr>
+            <td style="padding-top: .5rem;">{{ sol.userCancel }}</td>
+            <td style="padding-top: .5rem;">{{ sol.fecha_de_cancelacion }}</td>
+            <td style="padding-top: .5rem;">{{ sol.estatus }}</td>
+            <td style="padding-top: .5rem;">{{ sol.comentarios }}</td>
+            <td style="padding-top: .5rem;">{{ sol.atendida.documento }}</td>
+            {%if user.is_superuser %}
+
+            <td>
+                <a class="btn btn-outline-secondary" style="margin-left: .8rem;" href="{% url 'editar_solicitud_atendida' %}">Editar</a>
+
+                <a class="btn btn-outline-danger" style="margin-left: .8rem;" href="{% url 'eliminar_solicitud_atendida' sol.id %}">Eliminar</a>
+
+            </td>
+            {% else %}
+            <td>
+                <a class="btn btn-outline-secondary" href="{% url 'index'%}">Regresar</a>
+            </td>
+            {% endif %}
+
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+
 {% else %}
 <br>
 <br>

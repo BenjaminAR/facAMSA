@@ -5,10 +5,6 @@
 {% load static %}
 
 {% block st %}
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'css/index.css' %}" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!--
 <script>
     $(document).ready(function () {
@@ -21,37 +17,29 @@
 {% endblock %}
 
 {% block contect %}
-<div id="act">
+
     {% if solicitudes %}
-    <table class="table table-bordered">
-        <thead class="h6 thead_person">
-            <tr class="tr_person">
-                <td>Solicito</td>
-                <td>Empresa</td>
-                <td>Documento</td>
-                <td>Cliente</td>
-                <td>Cartera</td>
-                <td>Orden</td>
-                <td>Folio</td>
-                <td>RFC</td>
-                <td>Cuenta contable</td>
-                <td>Motivo de cancelacion</td>
-                <td>Fecha de solicitud</td>
-                <td>Obs</td>
-                <td>
-                    &nbsp;
-                    <!--
-                    <a href="{% url 'formulario' %}">
-                        <button class="button-person">Nueva</button>
-                    </a>
-                    -->
-                </td>
+    <table class="table table-hover" style="font-size: .75rem;">
+        <thead>
+            <tr>
+                <th scope="col">Solicito</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Cartera</th>
+                <th scope="col">Orden</th>
+                <th scope="col">Folio</th>
+                <th scope="col">RFC</th>
+                <th scope="col">Cuenta contable</th>
+                <th scope="col"> Motivo de cancelacion</th>
+                <th scope="col">Fecha de solicitud</th>
+                <th scope="col">Obs</th>
+                <th scope="col">&nbsp;</th>
             </tr>
         </thead>
         <tbody>
-            
             {% for sol in solicitudes %}
-            <tr class="font-small">
+            <tr>
                 <td>{{ sol.solicito }}</td>
                 <td>{{ sol.sucursal.empresa }}</td>
                 <td>{{ sol.documento }}</td>
@@ -70,7 +58,7 @@
                     
                     <form action="{% url 'form_aten' %}" method="GET">
                         <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
-                        <input type="submit" value="Atender" class="button-person">
+                        <input type="submit" value="Atender" class="btn btn-outline-success">
                     </form>
 
                 </td>
@@ -84,15 +72,16 @@
                     -->
                     <form action="{% url 'sol_atendida' %}" method="GET">
                         <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
-                        <input type="submit" value="Estatus" class="button-person">
+                        <input type="submit" value="Estatus" class="btn btn-outline-success">
                     </form>
                 </td>
                 {% endif %}
             </tr>
+            {% endfor %}    
         </tbody>
-        {% endfor %}
+        
     </table>
-</div>
+
 {% else %}
 {% if user.is_superuser %}
 <br>
@@ -113,7 +102,6 @@
 {% block footer %}
 
 {% endblock %}
-
 
 {% block st_js %}
 
