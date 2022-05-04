@@ -24,7 +24,7 @@ class solicitud(forms.ModelForm):
             'documento':'Documento',
             'nombre_cliente':'Nombre del cliente',
             'cartera_cliente':'Cartera de cliente',
-            'numOrden': 'Número de orden',
+            'numOrden': 'Número de orden/Inventario',
             'folio': 'Folio',
             'rfc': 'RFC',
             'cuenta_contable':'Cuenta contable',
@@ -69,7 +69,8 @@ class atencion(forms.ModelForm):
         }
 
         widgets = {
-            'atendida': forms.TextInput(attrs={'class':'form-control disabled'}),
+            
+            'atendida': forms.HiddenInput(attrs={'class':'form-control'}),
             'fecha_de_cancelacion':  forms.DateInput(attrs={'class':'form-control'}), 
             'estatus': forms.TextInput(attrs={'class':'form-control disabled'}),
             'comentarios': forms.Textarea(attrs={'class':'form-control pad'}),

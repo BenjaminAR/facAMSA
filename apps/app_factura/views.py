@@ -1,4 +1,6 @@
-import re
+from logging import exception
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from apps.app_factura.form import solicitud, atencion
@@ -50,15 +52,40 @@ def factura_view(request):
         form = solicitud()
     
     contexto = {'form':form}
-    return render(request, 'factura/form_fac.html', contexto) 
+    return render(request, 'factura/form_fac.html', contexto)
+		 
+#Funcion para eliminar un obejeto de Solicitud_atendida
+def eliminar_solicitud_atendida(request, id):
+    solicitud_atendida = Solicitud_atendida.objects.filter( id = id )
+    solicitud_atendida.delete()
+    print('-----------------##Eliminar registro de atendida ##-----------------\n')
+    
+    print(id)
+    print (f'id eliminado: {solicitud_atendida}')
 
+    print('\n-----------------#####-----------------\n')
+    return redirect('/')
 
-
-
-
-
-
-
+#Funcion para editar el formulario de solicitud atendida
+def editar_solicitud_atendida(request):
+    id_sol=1
+    #solicitud_atendida = Solicitud_atendida.objects.filter( id = id )
+    if request.method=='POST':
+        instance = Solicitud_atendida(userCancel=request.user)
+        form = atencion(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            print(f'El formunario de atencion fue salvado correctamente id: {id_sol}')
+            return redirect('/factura/index')
+    else:
+        form = atencion()
+        print('No se grabo el formulario.')
+    
+    contexto = {'form':form, 'atendida_rq':id_sol }
+    return render(request, 'factura/editar_sol_atendida.html', contexto)
+    #print(solicitud_atendida)
+    #return redirect('/')
+    #return render(request,'factura/aten.html', {'solicitud_atendida':solicitud_atendida} )
 
 #Función para formulario de atencion a las solicitudes
 @login_required 
@@ -68,6 +95,13 @@ def aten_view(request):
     if id_sol in query_sol_aten:
         solicitudes_atendidas = Solicitud_atendida.objects.filter(atendida_id=id_sol).order_by('-id')
         contexto = {'solicitudes_atendidas':solicitudes_atendidas, 'id_sol':id_sol}
+        print('-----------------##Lista de atendidas U: ADMINISTRADOR##-----------------\n')
+        print('Peticion ATENDIDAS de: ' + str(request.user.first_name) + ' ' + str(request.user.last_name) + '\n')
+        for sol in solicitudes_atendidas:
+            print(f'atendida_id:  {sol.atendida_id}')
+            print(f'id solicitud: {id_sol}')
+
+        print('\n-----------------#####-----------------\n')
         return render(request, 'factura/sol_atendida.html', contexto)
 
     if request.method=='POST':
@@ -85,28 +119,10 @@ def aten_view(request):
     return render(request, 'factura/aten.html', contexto) 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #Lista la informacion de las solicitudes ya atendidas
 @login_required
 def solicitud_atendida_list(request):
     id_sol = int(request.GET['id_sol'])
-    query_sol_aten = Solicitud_atendida.objects.values_list('atendida_id', flat=True)
     
     if request.user.is_superuser:
         solicitudes_atendidas = Solicitud_atendida.objects.all().order_by('-id')
@@ -114,27 +130,29 @@ def solicitud_atendida_list(request):
         solicitudes_atendidas = Solicitud_atendida.objects.filter(atendida_id=id_sol).order_by('-id')
 
     contexto = {'solicitudes_atendidas':solicitudes_atendidas, 'id_sol':id_sol}
-    print('-----------------##solicitud_atendida_list##-----------------\n')
+    print('-----------------##Lista de atendidas U: ESTANDAR##-----------------\n')
     print('Peticion ATENDIDAS de: ' + str(request.user.first_name) + ' ' + str(request.user.last_name) + '\n')
     for sol in solicitudes_atendidas:
+        pass
+    if solicitudes_atendidas:
         print(f'atendida_id:  {sol.atendida_id}')
-        print(f'id_sol: {id_sol}')
-
+        print(f'id solicitud: {id_sol}') 
+    else:
+        print (f'No hay id relacionado con la solicitud_id: { id_sol }')
     print('\n-----------------#####-----------------\n')
     return render(request, 'factura/sol_atendida.html', contexto )
 
 
-
-
-
 '''
-
-    query_sol_aten = Solicitud_atendida.objects.values_list('atendida_id', flat=True)
-    print(f'id_sol:{ id_sol }')
-    if id_sol in query_sol_aten:
-        print('jijija')
-    print(type(query_sol_aten))
-    print(query_sol_aten)
-
+def editar_solicitud_atendida(request, id):
+    solicitud_atendida = Solicitud_atendida.objects.filter(id = id)
+    if request.method == 'GET':
+        sol_atendida_form = atencion()
+    else:
+        sol_atendida_form = atencion(request.POST, instance = solicitud_atendida)
+        if sol_atendida_form.is_valid():
+            sol_atendida_form.save()
+        redirect('/')
+    return(request,'factura/aten.html',{'sol_atendida_form':sol_atendida_form})
 
 '''
