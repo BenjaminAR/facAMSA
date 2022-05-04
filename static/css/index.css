@@ -13,16 +13,16 @@ body{
 }
 
 .button-person{
-    background-color:rgb(255, 0, 0);
-    padding: .2rem .4rem;
-    text-align: center;
-    border: none;
+    background-color:transparent !important;
     border-radius: 3px;
-    color: rgb(255, 255, 255);
+    border-color: #198754 !important;
+    color: #198754 !important;
 }
-
-.button-person:hover {
-    box-shadow: 0 7px 5px 0 rgba(0,0,0,0.24), 0 9px 10px 0 rgba(0,0,0,0.19);
+.button-person:hover{
+    background-color: #198754 !important;
+    border-radius: 3px;
+    border-color: #198754 !important;
+    color: rgb(255, 255, 255) !important;
 }
 
 .tr_person{
@@ -42,10 +42,18 @@ body{
     color: rgb(182, 50, 50);
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1080px) {
     .button-person{
-        background-color:rgb(0, 60, 255);
-        margin:.4rem;
-        margin-left: 20%;
+        margin: auto;
+        background-color:transparent !important;
+        border-radius: 3px;
+        border-color: #198754 !important;
+        color: #198754 !important;
     }
-  }
+    .button-person:hover{
+        background-color: #198754 !important;
+        border-radius: 3px;
+        border-color: #198754 !important;
+        color: rgb(255, 255, 255) !important;
+    }
+  } 
