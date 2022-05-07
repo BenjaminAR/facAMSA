@@ -56,9 +56,9 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" aria-label="Search" placeholder="Número de orden">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <form class="d-flex" action="/factura/solicitud_filtro/" method="GET">
+          <input required class="form-control me-2" type="number" aria-label="Buscar" placeholder="Folio" name="q" >
+          <input class="btn btn-outline-success" type="submit" value="Buscar">
         </form>
       </div>
     </div>
