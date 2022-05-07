@@ -1,5 +1,4 @@
 from email.policy import default
-import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import CharField, PositiveIntegerField
