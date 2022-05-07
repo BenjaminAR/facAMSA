@@ -1,5 +1,3 @@
-from logging import exception
-from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -37,6 +35,26 @@ def solicitud_list(request):
 
     print('\n'+'-----------------#####-----------------')
     return render(request, 'factura/index.html', contexto )
+
+
+#Función para el formulario del template base:search
+@login_required
+def solicitud_search_view(request):
+    #print(dir(request))
+    query_dict = request.GET # this is a dictionary
+    query = query_dict.get("q")
+    solicitudes = None
+    if query is not None:
+        solicitudes = Solicitud.objects.filter(numOrden=query)
+
+    print("\n----------------SEARCH----------------------\n\n")
+    print(request.GET)
+    print(solicitudes)
+    print("\n\n----------------------------------------")
+
+    context = {"solicitudes":solicitudes}
+    return render(request, "factura/solicitud_filtro.html", context=context)
+    
 
 #Función para crear una nueva solicitud
 @login_required  
@@ -142,17 +160,3 @@ def solicitud_atendida_list(request):
     print('\n-----------------#####-----------------\n')
     return render(request, 'factura/sol_atendida.html', contexto )
 
-
-'''
-def editar_solicitud_atendida(request, id):
-    solicitud_atendida = Solicitud_atendida.objects.filter(id = id)
-    if request.method == 'GET':
-        sol_atendida_form = atencion()
-    else:
-        sol_atendida_form = atencion(request.POST, instance = solicitud_atendida)
-        if sol_atendida_form.is_valid():
-            sol_atendida_form.save()
-        redirect('/')
-    return(request,'factura/aten.html',{'sol_atendida_form':sol_atendida_form})
-
-'''
