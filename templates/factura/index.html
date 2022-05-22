@@ -30,10 +30,10 @@
                 <th scope="col">Orden</th>
                 <th scope="col">Folio</th>
                 <th scope="col">RFC</th>
-                <th scope="col">Cuenta contable</th>
+
                 <th scope="col"> Motivo de cancelacion</th>
                 <th scope="col">Fecha de solicitud</th>
-                <th scope="col">Obs</th>
+
                 <th scope="col">&nbsp;</th>
             </tr>
         </thead>
@@ -48,10 +48,10 @@
                 <td>{{ sol.numOrden }}</td>
                 <td>{{ sol.folio }}</td>
                 <td>{{ sol.rfc }}</td>
-                <td>{{ sol.cuenta_contable }}</td>
+
                 <td>{{ sol.motivo_de_cancelacion }}</td>
                 <td>{{ sol.fecha_sol_de_cancelacion}}</td>
-                <td>{{ sol.obs }}</td>
+
                 {% if user.is_superuser %}
                  
                 <td>
@@ -60,7 +60,6 @@
                         <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
                         <input type="submit" value="Atender" class="btn btn-outline-success">
                     </form>
-
                 </td>
                 
                 {% else %}
@@ -76,6 +75,7 @@
                     </form>
                 </td>
                 {% endif %}
+            
             </tr>
             {% endfor %}    
         </tbody>

@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 
-<title>{% block title %}AMSA | sol filtro{% endblock %}</title>
+<title>{% block title %}AMSA | Solicitudes{% endblock %}</title>
 {% load static %}
 
 {% block st %}
@@ -79,7 +79,7 @@
 {% if user.is_superuser %}
 <br>
 <br>
-<h2 style="text-align: center;" >No se encontro ningun dato</h2>
+<h2 style="text-align: center;" >No se encontro el folio: {{ folio }}</h2>
 <br>
 {% else %}
 <br>

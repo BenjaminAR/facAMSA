@@ -5,18 +5,7 @@
 {% load static %}
 
 {% block st %}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'css/index.css' %}" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<!--
-<script>
-    $(document).ready(function () { 
-        var refreshId = setInterval(function () {
-            $('#alerta_incidencias').load('/act');//actualizas el div
-        }, 1000);
-    });
-</script>
--->
+<link href="{% static 'css/loader.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block contect %}
@@ -45,9 +34,11 @@
             {%if user.is_superuser %}
 
             <td>
-                <a class="btn btn-outline-secondary" style="margin-left: .8rem;" href="{% url 'editar_solicitud_atendida' %}">Editar</a>
+                <a class="btn btn-outline-secondary" style="margin-left: .8rem;"
+                    href="{% url 'editar_solicitud_atendida' %}">Editar</a>
 
-                <a class="btn btn-outline-danger" style="margin-left: .8rem;" href="{% url 'eliminar_solicitud_atendida' sol.id %}">Eliminar</a>
+                <a class="btn btn-outline-danger" style="margin-left: .8rem;"
+                    href="{% url 'eliminar_solicitud_atendida' sol.id %}">Eliminar</a>
 
             </td>
             {% else %}
@@ -64,7 +55,13 @@
 {% else %}
 <br>
 <br>
-<h2 style="text-align: center;">Tu solicitud aún no ha sido atendida.</h2>
+<div id="contenedor">
+    <h2 style="text-align: center;">Solicitud en cola.</h2>
+
+
+    <div class="loader" id="loader">Loading...</div>
+</div>
+
 {% endif %}
 
 
