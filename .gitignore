@@ -1,3 +1,4 @@
+.gitignore
 .env
 notas
 amsa\__pycache__
