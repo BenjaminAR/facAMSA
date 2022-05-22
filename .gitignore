@@ -2,3 +2,7 @@
 .env
 notas
 amsa\__pycache__
+apps\__pycache__
+apps\app_factura\migrations
+apps\app_autenticacion\migrations
+apps\app_dashboard\migrations

@@ -12,7 +12,7 @@ from django.contrib.messages import constants as msj_error
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+
 
 DEBUG = True
 
@@ -62,9 +62,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'amsa.wsgi.application'
 
-#DATABASES = config('databases')
-
-
+SECRET_KEY = config('SECRET_KEY')
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('PORT'),
+    }
+}
+'''
 DATABASES = {
 
     'default': {
@@ -72,10 +81,11 @@ DATABASES = {
         'NAME':'AMSA',
         'USER':'postgres',
         'PASSWORD':'123456',
-        'HOST':'localhost',
+        'HOST':'192.168.1.14',
         'PORT': 5432,
     }
 }
+'''
 
 
 AUTH_PASSWORD_VALIDATORS = [
