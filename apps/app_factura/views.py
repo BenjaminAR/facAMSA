@@ -1,4 +1,3 @@
-from django.views.generic.edit import DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from apps.app_factura.form import solicitud, atencion
@@ -45,14 +44,15 @@ def solicitud_search_view(request):
     query = query_dict.get("q")
     solicitudes = None
     if query is not None:
-        solicitudes = Solicitud.objects.filter(numOrden=query)
-
+        solicitudes = Solicitud.objects.filter(folio=query)
+        folio = request.GET.get("q")
+    folio = request.GET.get("q")
     print("\n----------------SEARCH----------------------\n\n")
-    print(request.GET)
+    print(request.GET.get("q"))
     print(solicitudes)
     print("\n\n----------------------------------------")
 
-    context = {"solicitudes":solicitudes}
+    context = {"solicitudes":solicitudes, "folio":folio}
     return render(request, "factura/solicitud_filtro.html", context=context)
     
 
