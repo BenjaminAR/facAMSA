@@ -18,16 +18,31 @@
 
 <body>
     <div class="conteiner">
-        <h4 style="text-align: center; padding-top: 2.5rem;">Solicitud para cancelación de CFDI</h4>
+        <h4 style="text-align: center; padding-top: 2.5rem;">Solicitud para cancelación de Nota de cargo</h4>
         <main class="form-group">
 
 
-            <form method="post">
+            <form enctype="multipart/form-data" method="post">
                 {% csrf_token %}
 
                 {{ form }}
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Enviar solicitud</button>
+
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <br>
                 <br>
 

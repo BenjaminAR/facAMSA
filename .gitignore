@@ -1,8 +1,20 @@
 .gitignore
 .env
 notas
-amsa\__pycache__
-apps\__pycache__
+apps\__pycache__\*
 apps\app_factura\migrations
 apps\app_autenticacion\migrations
 apps\app_dashboard\migrations
+apps\app_factura\timezone__pruebas.py
+amsa\__pycache__\*
+amsa\__pycache__\*.*
+amsa\__pycache__
+amsa\__pycache__\__init__.cpython-310.pyc
+media
+amsa/__pycache__/*.*
+apps/__pycache__/*.*
+apps/app_autenticacion/__pycache__/*.*
+apps/app_dashboard/__pycache__/*.*
+ apps/app_factura/__pycache__/*.*
+ apps/app_factura/__pycache__/
+ apps/app_factura/migrations/*.*

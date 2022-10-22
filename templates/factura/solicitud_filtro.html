@@ -15,60 +15,74 @@
 
 <!--   Body   -->
 
-
 {% if solicitudes %}
 <table class="table table-hover" style="font-size: .75rem;">
     <thead>
         <tr>
-            <th scope="col">Solicito</th>
-            <th scope="col">Empresa</th>
+            <th scope="col">Solicitó</th>
             <th scope="col">Documento</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Cartera</th>
-            <th scope="col">Orden</th>
-            <th scope="col">Folio</th>
-            <th scope="col">RFC</th>
-            <th scope="col">Cuenta contable</th>
-            <th scope="col"> Motivo de cancelacion</th>
+            <th scope="col">Folio CFDI</th>
+            <th scope="col">RFC cliente</th>
+            <th scope="col">UUID</th>
             <th scope="col">Fecha de solicitud</th>
-            <th scope="col">Obs</th>
-            <th scope="col">&nbsp;</th>
+            <th scope="col">Boton</th>
         </tr>
     </thead>
     <tbody>
         {% for sol in solicitudes %}
         <tr>
-            <td>{{ sol.solicito }}</td>
-            <td>{{ sol.sucursal.empresa }}</td>
+            <td>{{ sol.solicitante }}</td>
             <td>{{ sol.documento }}</td>
-            <td>{{ sol.nombre_cliente }}</td>
-            <td>{{ sol.cartera_cliente }}</td>
-            <td>{{ sol.numOrden }}</td>
             <td>{{ sol.folio }}</td>
             <td>{{ sol.rfc }}</td>
-            <td>{{ sol.cuenta_contable }}</td>
-            <td>{{ sol.motivo_de_cancelacion }}</td>
+            <td>{{ sol.UUID }}</td>
             <td>{{ sol.fecha_sol_de_cancelacion}}</td>
-            <td>{{ sol.obs }}</td>
-            {% if user.is_superuser %}
-             
             <td>
-                
-                <form action="{% url 'form_aten' %}" method="GET">
-                    <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
-                    <input type="submit" value="Atender" class="btn btn-outline-success">
-                </form>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#Modal{{ sol.id }}">
+                    Detalles
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Modal{{ sol.id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ID del la solicitud: {{ sol.id }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span class="text-muted font-13">Nombre del cliente</span><br>{{ sol.nombre_cliente }}<br>
+                                <hr class="featurette-divider">
+                                <span class="text-muted font-13">Motivo de cancelación</span><br>{{ sol.motivo_de_cancelacion }}<br>
+                                <hr class="featurette-divider">
+                                <span class="text-muted font-13">UUID</span><br>{{ sol.UUID }}<br>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                                {% if user.is_superuser %}
+                                <form action="{% url 'form_aten' %}" method="GET">
+                                    <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
+                                    <input type="submit" value="Atender" class="btn btn-outline-success">
+                                </form>
+
+                                {% else %}
+                                <form action="{% url 'sol_atendida' %}" method="GET">
+                                    <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
+                                    <input type="submit" value="Estatus" class="btn btn-outline-success">
+                                </form>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </td>
-            
-            {% else %}
-            <td>
-                <form action="{% url 'sol_atendida' %}" method="GET">
-                    <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
-                    <input type="submit" value="Estatus" class="btn btn-outline-success">
-                </form>
-            </td>
-            {% endif %}
+
         </tr>
         {% endfor %}    
     </tbody>
@@ -79,12 +93,12 @@
 {% if user.is_superuser %}
 <br>
 <br>
-<h2 style="text-align: center;" >No se encontro el folio: {{ folio }}</h2>
+<h2 style="text-align: center;" >No existe solicitud con folio: {{ folio }} En ningun usuario</h2>
 <br>
 {% else %}
 <br>
 <br>
-<h2 style="text-align: center;" >No hay registos de solicitudes con usuario: {{ user.first_name }} {{user.last_name}}</h2>
+<h2 style="text-align: center;" >No se encuantra el folio <span style="color: red;"> {{ folio }} </span> en el usuario {{ user.first_name }} {{ user.last_name }} </h2>
 {% endif %}
 {% endif %}
 

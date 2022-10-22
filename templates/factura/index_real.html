@@ -1,0 +1,101 @@
+{% extends 'base/base.html' %}
+
+
+<title>{% block title %}AMSA | Lista {% endblock %}</title>
+{% load static %}
+
+{% block st %}
+<!--
+<script>
+    $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#alerta_incidencias').load('/act');//actualizas el div
+        }, 1000);
+    });
+</script>
+-->
+{% endblock %}
+
+{% block contect %}
+
+    {% if solicitudes %}
+    <table class="table table-hover" style="font-size: .75rem;">
+        <thead>
+            <tr>
+                <th scope="col">Solicito</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Cartera</th>
+                <th scope="col">Orden</th>
+                <th scope="col">Folio</th>
+                <th scope="col">RFC</th>
+                <th scope="col"> Motivo de cancelacion</th>
+                <th scope="col">Fecha de solicitud</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sol in solicitudes %}
+            <tr>
+                <td>{{ sol.solicito }}</td>
+                <td>{{ sol.sucursal.empresa }}</td>
+                <td>{{ sol.documento }}</td>
+                <td>{{ sol.nombre_cliente }}</td>
+                <td>{{ sol.cartera_cliente }}</td>
+                <td>{{ sol.numOrden }}</td>
+                <td>{{ sol.folio }}</td>
+                <td>{{ sol.rfc }}</td>
+                <td>{{ sol.motivo_de_cancelacion }}</td>
+                <td>{{ sol.fecha_sol_de_cancelacion}}</td>
+
+                {% if user.is_superuser %}
+                 
+                <td>
+                    
+                    <form action="{% url 'form_aten' %}" method="GET">
+                        <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
+                        <input type="submit" value="Atender" class="btn btn-outline-success">
+                    </form>
+                </td>
+                
+                {% else %}
+                <td>
+
+                    <form action="{% url 'sol_atendida' %}" method="GET">
+                        <input type="hidden" id="id_sol" name="id_sol" value="{{ sol.id }}">
+                        <input type="submit" value="Estatus" class="btn btn-outline-success">
+                    </form>
+                </td>
+                {% endif %}
+            
+            </tr>
+            {% endfor %}    
+        </tbody>
+        
+    </table>
+
+{% else %}
+{% if user.is_superuser %}
+<br>
+<br>
+<h2 style="text-align: center;" >No hay nada que atender</h2>
+<br>
+{% else %}
+<br>
+<br>
+<h2 style="text-align: center;" >No hay registos de solicitudes con usuario: {{ user.first_name }} {{user.last_name}}</h2>
+{% endif %}
+{% endif %}
+
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block st_js %}
+
+{% endblock %}

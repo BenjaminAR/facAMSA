@@ -12,8 +12,9 @@ class Dashboard(View):
             solicitud = Solicitud.objects.all().count()
             solicitud_a = Solicitud_atendida.objects.all().count()
             solicitud_sa = solicitud - solicitud_a
-            contexto = {'solicitud':solicitud, 'solicitud_a':solicitud_a, 'solicitud_sa':solicitud_sa, }
-
+            contexto = {'solicitud':solicitud, 
+                        'solicitud_a':solicitud_a, 
+                        'solicitud_sa':solicitud_sa, }
 
             print('-----------------#####-----------------\n')
             

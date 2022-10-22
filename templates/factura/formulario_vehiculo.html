@@ -18,25 +18,22 @@
 
 <body>
     <div class="conteiner">
-        <h4 style="text-align: center; padding-top: 2.5rem;">Solicitud para cancelación de CFDI</h4>
+        <h4 style="text-align: center; padding-top: 2.5rem;">Solicitud para cancelación vehículo nuevo</h4>
         <main class="form-group">
 
-
-            <form method="post">
+            <form enctype="multipart/form-data" method="post">
                 {% csrf_token %}
 
                 {{ form }}
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Enviar solicitud</button>
-                <br>
-                <br>
-
             </form>
 
         </main>
     </div>
 
 </body>
+
 {% endblock %}
 
 {% block footer %}

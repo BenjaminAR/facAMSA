@@ -5,8 +5,10 @@
 .pad{
     margin-bottom: .5rem;
     margin-top: 1rem;
+    max-height: 8rem;
 }
 
 .f-right{
     float: right;
 }
+

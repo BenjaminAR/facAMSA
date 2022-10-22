@@ -1,0 +1,24 @@
+.contenedor_documentos{
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.contenedor_documentos p{
+    border: solid 2px #921616;
+    border-radius: 5px;
+    padding: .5rem .4rem;
+    color: grey;
+}
+
+.contenedor_documentos a{
+    text-decoration: none;
+}
+
+.contenedor_documentos p:hover{
+    background-color: #921616;
+    color: white;
+}

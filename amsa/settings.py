@@ -73,6 +73,7 @@ DATABASES = {
         'PORT': config('PORT'),
     }
 }
+
 '''
 DATABASES = {
 
@@ -105,23 +106,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-mx'
 
-USE_TZ = True
-
 TIME_ZONE = 'UTC'
+
+USE_TZ = True
 
 USE_I18N = True
 
 USE_L10N = True
 
-
-
-
 STATIC_URL = '/static/'
 STATIC_MEDIA ='/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media'),
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+MEDIA_URL = '/media/'
+#MEDIA_ROOT = '/media/'
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'media'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/factura/index'
@@ -137,5 +136,12 @@ MESSAGAE_TAGS={
     msj_error.ERROR: 'danger',
 
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
