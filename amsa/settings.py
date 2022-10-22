@@ -74,21 +74,6 @@ DATABASES = {
     }
 }
 
-'''
-DATABASES = {
-
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'AMSA',
-        'USER':'postgres',
-        'PASSWORD':'123456',
-        'HOST':'192.168.1.14',
-        'PORT': 5432,
-    }
-}
-'''
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
