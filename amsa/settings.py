@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'apps.app_autenticacion',
     'apps.app_factura',
     'apps.app_dashboard',
+    'apps.app_adm_vehiculo',
 ]
 
 MIDDLEWARE = [
