@@ -1,0 +1,28 @@
+
+.main-form-vehiculo{
+    margin: 4rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-vehiculo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.picker__label{
+    margin: .5rem 0;
+}
+
+
+.event{
+    background-color: rgb(214, 213, 211);
+    padding: 1rem;
+}
+
+.event ul li{
+    list-style: None;
+
+}
