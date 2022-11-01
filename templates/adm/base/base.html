@@ -37,7 +37,7 @@
               Cancelaciones
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a style="text-align: center;" class="dropdown-item" href="{% url 'index' %}">Lista de solicitudes</a></li>
+              <li><a style="text-align: center;" class="dropdown-item" href="{% url 'index' %}">Nueva solicitud</a></li>
               <li><hr style="color: #EEEDED;" class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'index' %}">Factura de vehículo nuevo</a></li>
               <li><a class="dropdown-item" href="{% url 'index' %}">Factura de vehículo seminuevo</a></li>
@@ -48,9 +48,8 @@
             <li class="nav-item"><a class="nav-link disabled"><br></a></li>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Administración
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"aria-expanded="false">
+              <span style="color: rgb(23, 137, 23);">Administración</span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a style="text-align: center;" class="dropdown-item" href="{% url 'adm' %}">Vehículos</a></li>

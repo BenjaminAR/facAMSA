@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+
+<title>{% block title %}AMSA | Nuevo registo {% endblock %}</title>
+{% load static %}
+
+{% block st %}
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/form.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block contect %}
+
+<body>
+    <div class="conteiner">
+        <h4 style="text-align: center; padding-top: 2.5rem;">Agregar vehículo</h4>
+        <main class="form-group">
+            <form method="post">
+                {% csrf_token %}
+
+                {{ form }}
+                
+                <button class="w-100 btn btn-lg btn-primary" style="margin-top: 2rem;" type="submit">Vincular pagos</button>
+            </form>
+
+        </main>
+    </div>
+
+</body>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block st_js %}
+
+{% endblock %}

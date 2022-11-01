@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %}
+
+
+<title>{% block title %}AMSA | Lista de vehiculos {% endblock %}</title>
+{% load static %}
+
+{% block st %}
+<!--
+<script>
+    $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#alerta_incidencias').load('/act');//actualizas el div
+        }, 1000);
+    });
+</script>
+-->
+{% endblock %}
+
+{% block contect %}
+
+{% if q %}
+<table class="table table-hover" style="font-size: .90rem;">
+    <thead>
+        <tr>
+            <th scope="col">Modeloo
+                
+            </th>
+            <th scope="col">Año</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Entidad</th>
+            <th scope="col">VIN</th>
+            <th scope="col">Propietario</th>
+            <th scope="col">Chofer</th>
+            <th scope="col">Boton</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for info in q %}
+        
+        <tr>
+            <!--<td>{{ sol.solicitudes.solicitante }}</td>-->
+            <td>{{ info.vehiculo.modelo }}</td>
+            <td>{{ info.vehiculo.año }}</td>
+            <td>{{ info.vehiculo.placa }}</td>
+            <td>{{ info.vehiculo.entidad }}</td>
+            <td>{{ info.vehiculo.vin }}</td>
+            <td>{{ info.vehiculo.propietario}}</td>
+            <td>{{ info.vehiculo.chofer}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#Modal{{ info.id }}" style="font-size: .90rem; padding: 2px 10px;">
+                    Pagos
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Modal{{ info.id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Fechas para proximos pagos a placa: {{ info.vehiculo.placa }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span class="text-muted font-13">Fecha para el proximo pago de tenencia</span><br>{{ info.tenencia }}<br>
+                                <span class="text-muted font-13">Costo</span><br> $ {{ info.costo_tenencia }}<br>                         
+                                <hr class="featurette-divider">
+                                <span class="text-muted font-13">Fecha para el proximo pago de verificacion</span><br>{{ info.verificacion }}<br>
+                                <hr class="featurette-divider">
+                                <span class="text-muted font-13">Fecha para el proximo pago de refrendo</span><br>{{ info.refrendo }}<br>
+                                <hr class="featurette-divider">
+                                <span class="text-muted font-13">Fecha para el proximo pago de la tarjeta de circulación</span><br>{{ info.tarjeta_circulacion }}<br>
+                                <hr class="featurette-divider">
+                                <span class="text-muted font-13">Fecha para el proximo pago del Seguro</span><br>{{ info.seguro }}</a><br>
+                                <span class="text-muted font-13">Costo</span><br> $ {{ info.costo_seguro }}<br>    
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </td>
+
+        </tr>
+        
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% else %}
+{% if user.is_superuser %}
+<br>
+<br>
+<h2 style="text-align: center;">No registro de vehículos</h2>
+<br>
+{% else %}
+<br>
+<br>
+<h2 style="text-align: center;">No hay registos de vehículos con usuario: {{ user.first_name }} {{user.last_name}}
+</h2>
+{% endif %}
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block st_js %}
+
+{% endblock %}

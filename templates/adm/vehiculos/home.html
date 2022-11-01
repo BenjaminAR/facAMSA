@@ -1,0 +1,60 @@
+{% extends 'adm/base/baseCalendar.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<main class="main-form-vehiculo">
+
+
+    <div class="picker form-vehiculo">
+        <main class="form-group">
+            <h2 style="text-align: center; margin: 1.2rem 0;">Nuevo pago</h2>
+            <form id="picker__confirm" class="picker__confirm form-control" autocomplete="off"
+                action="{% url 'calendar' %}" method="POST">
+                {% csrf_token %}
+                <div class="picker__component">
+                    <p class="picker__label">Nombre del pago: </p>
+                    {% render_field form.eventTitle class+="picker__field form-control" %}
+                </div>
+                <div class="picker__component">
+                    <p class="picker__label">Fecha recomendada para el pago: </p>
+                    {% render_field form.startDateTime class+="picker__field form-control" %}
+                </div>
+                <div class="picker__component">
+                    <p class="picker__label">Último dia para pagar: </p>
+                    {% render_field form.endDateTime class+="picker__field form-control" %}
+                </div>
+                <br>
+                <input type="submit" value="Guardar" class="picker__button w-100 btn btn-lg btn-primary">
+            </form>
+        </main>
+    </div>
+
+    <div class="event">
+        <h2 class="event_title">Lista de próximos pagos a vencer</h2>
+        <br>
+        <div style="height: 40vh; overflow-Y: scroll; ">
+            {% for item in booking_event %}
+            <ul class="event__list">
+                <li>Pago: {{ item.0 }}</li>
+                <li>Fecha recomendada para el pago: {{ item.1 }}</li>
+                <li>Último dia para pagar: {{ item.2 }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</main>
+
+<div class="display_message">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li style="text-align: center; list-style: None; font-weight: bold; color: rgb(206, 18, 18);" {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+{% endblock %}

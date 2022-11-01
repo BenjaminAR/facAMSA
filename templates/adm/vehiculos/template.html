@@ -1,0 +1,100 @@
+{% extends 'adm/base/base.html' %}
+
+
+<title>{% block title %}AMSA | Lista de vehiculos {% endblock %}</title>
+{% load static %}
+
+
+{% block st %}
+<!--
+<script>
+    $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#alerta_incidencias').load('/act');//actualizas el div
+        }, 1000);
+    });
+</script>
+-->
+
+<style>
+    .calendario{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+{% endblock %}
+
+{% block contect %}
+
+
+<div class="calendario">
+<iframe
+<iframe src="https://calendar.google.com/calendar/embed?src=db392773061b4d7d8d1a2efc5a7ebc017bb00876c7b40f03e20c2f2619dcbad0%40group.calendar.google.com&ctz=America%2FMexico_City" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</iframe>
+</div>
+
+{% if q %}
+<table class="table table-hover" style="font-size: .90rem;">
+    <thead>
+        <tr>
+            <th scope="col">Modelo</th>
+            <th scope="col">Año</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Entidad</th>
+            <th scope="col">VIN</th>
+            <th scope="col">Propietario</th>
+            <th scope="col">Chofer</th>
+            <th scope="col">Asignar / Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for info in q %}
+
+        <tr>
+            <td>{{ info.modelo }}</td>
+            <td>{{ info.año }}</td>
+            <td>{{ info.placa }}</td>
+            <td>{{ info.entidad }}</td>
+            <td>{{ info.vin }}</td>
+            <td>{{ info.propietario}}</td>
+            <td>{{ info.chofer}}</td>
+            <td>
+                <form action="" method="GET">
+                    <input type="hidden" name="id_vehiculo" name="id_vehiculo" value="{{ info.id }}">
+                    <input type="submit" value="Pagos" class="btn btn-outline-success"
+                        style="font-size: .90rem; padding: 2px 10px;">
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% else %}
+{% if user.is_superuser %}
+<br>
+<br>
+<h2 style="text-align: center;">No registro de vehículos</h2>
+<br>
+{% else %}
+<br>
+<br>
+<h2 style="text-align: center;">No hay registos de vehículos con usuario: {{ user.first_name }} {{user.last_name}}
+</h2>
+{% endif %}
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block st_js %}
+
+{% endblock %}
