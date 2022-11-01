@@ -15,6 +15,7 @@ amsa/__pycache__/*.*
 apps/__pycache__/*.*
 apps/app_autenticacion/__pycache__/*.*
 apps/app_dashboard/__pycache__/*.*
- apps/app_factura/__pycache__/*.*
- apps/app_factura/__pycache__/
- apps/app_factura/migrations/*.*
+apps/app_factura/__pycache__/*.*
+apps/app_factura/__pycache__/
+apps/app_factura/migrations/*.*
+calendarvehiculo-124999f1efd1.json

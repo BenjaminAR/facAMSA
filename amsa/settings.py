@@ -27,10 +27,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'widget_tweaks',
     'apps.app_autenticacion',
     'apps.app_factura',
     'apps.app_dashboard',
-    'apps.app_adm_vehiculo',
+    'apps.app_administracion',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,9 @@ DATABASES = {
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
         'PORT': config('PORT'),
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
     }
 }
 
@@ -92,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+timezone = 'america/mexico_city'
 
 USE_TZ = True
 
