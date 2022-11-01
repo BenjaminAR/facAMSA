@@ -140,6 +140,8 @@ class Vehiculo_form(forms.ModelForm):
             'obs': forms.Textarea(attrs={'class':'form-control pad'} ),
             
         }#etiquetas HTML
+    archivo = forms.FileField()
+    archivo.widget.attrs.update({'class': 'form-control'})
 
 class Vehiculo_seminuevo_form(forms.ModelForm):
     class Meta:

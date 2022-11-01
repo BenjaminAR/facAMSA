@@ -70,7 +70,7 @@ def factura_view(request):
             form.save()
             return redirect('/factura/index')
         else:
-            print('**** Error en form principal *****')
+            print('**** Error en form Solicitud *****')
             return redirect('/')
     else:
         form = Solicitud_form()
